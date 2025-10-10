@@ -1,0 +1,37 @@
+[
+    {
+
+      "id": 205380,
+      "term": "202620",
+      "termDesc": "Spring 2026",
+      "courseReferenceNumber": "22181",
+      "partOfTerm": "1",
+      "courseNumber": "1470",
+      "courseDisplay": "1470",
+      "subject": "CSCI",
+      "subjectDescription": "Computer Science",
+      "sequenceNumber": "0",
+      "campusDescription": "Main",
+      "scheduleTypeDescription": "Lecture",
+      "courseTitle": "COMPUTER SCIENCE I",
+      "creditHours": 4,
+      "maximumEnrollment": 20,
+      "enrollment": 0,
+      "seatsAvailable": 20,
+      "waitCapacity": 0,
+      "waitCount": 0,
+      "waitAvailable": 0,
+      "crossList": null,
+      "crossListCapacity": null,
+      "crossListCount": null,
+      "crossListAvailable": null,
+      "creditHourHigh": null,
+      "creditHourLow": 4,
+      "creditHourIndicator": null,
+      "openSection": true,
+      "linkIdentifier": null,
+      "isSectionLinked": false,
+      "subjectCourse": "CSCI1470"
+    }
+]
+  
