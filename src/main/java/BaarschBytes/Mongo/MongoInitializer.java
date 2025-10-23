@@ -47,8 +47,9 @@ public class MongoInitializer {
                         .append("number", course.getNumber())
                         .append("name", course.getName())
                         .append("description", course.getDescription())
-                        .append("catalog year", course.getCatalogYear())
-                        .append("Prerequisites", prereqsToDoc(course.getPrerequisites()));
+                        .append("catalog year", course.getCatalogYear());
+                      // .append("Prerequisites", prereqsToDoc(course.getPrerequisites())
+                     //  );
 
                 })
                 .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);

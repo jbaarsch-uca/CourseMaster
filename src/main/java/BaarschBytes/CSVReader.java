@@ -56,7 +56,9 @@ public class CSVReader {
                 count ++;
                 System.out.println(count + " " + c.getNumber()
                         + "\t" + c.getName()
-                        + "\t" + c.getDescription());
+                        + "\t" + c.getDescription()
+                        + "\n" + c.getPrerequisites()
+                );
             }
 
             // If the JSON file contains an array of objects

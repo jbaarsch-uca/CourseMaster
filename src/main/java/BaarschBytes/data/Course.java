@@ -71,4 +71,8 @@ public class Course implements Prerequisite {
     public void setCatalogYear(int catalogYear) {
         this.catalogYear = catalogYear;
     }
+    public String toString() {
+        return this.getProgram() + this.getNumber() + ": " + this.getName();
+    }
+
 }

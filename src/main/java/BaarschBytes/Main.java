@@ -3,6 +3,7 @@ package BaarschBytes;
 import BaarschBytes.Mongo.MongoInitializer;
 import BaarschBytes.data.Course;
 import BaarschBytes.data.NonCoursePrerequisite;
+import BaarschBytes.GUI.CourseFrame;
 import org.bson.Document;
 
 import java.util.List;
@@ -30,11 +31,13 @@ public class Main {
         course.setPrerequisites(List.of(ncp));
 
 
-        mongoInit.insertOneCourse(course);
+        //mongoInit.insertOneCourse(course);
 
+        List<Course> courses = courseReader.readFile("CSCICourses2.txt");
+        mongoInit.insertDefaultCourses(courses);
 
-        //mongoInit.insertDefaultCourses(courseReader.readFile("CSCICourses2.txt"));
-
+        CourseFrame frame = new CourseFrame(courses);
+        frame.display();
 
     }
 }
