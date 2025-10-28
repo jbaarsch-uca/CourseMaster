@@ -3,6 +3,7 @@ package BaarschBytes;
 import BaarschBytes.data.Course;
 import BaarschBytes.data.CourseListing;
 import BaarschBytes.data.Parser;
+import BaarschBytes.data.Prerequisite;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -12,9 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class CSVReader {
 
@@ -53,12 +52,23 @@ public class CSVReader {
             System.out.println("Read Courses: ");
             int count = 0;
             for (Course c : courses) {
-                count ++;
-                System.out.println(count + " " + c.getNumber()
-                        + "\t" + c.getName()
-                        + "\t" + c.getDescription()
-                        + "\n" + c.getPrerequisites()
-                );
+                if (c.getPrerequisites() != null) {
+                    for (Prerequisite p : c.getPrerequisites()) {
+                        if (p instanceof Course) {
+                            final String number = ((Course) p).getNumber();
+                            Optional<Course> prereq = courses.stream()
+                                    .filter(prereqc -> (prereqc.getNumber().equalsIgnoreCase(number)))
+                                    .findFirst();
+                            if (prereq.isPresent())
+                                p = prereq.get();
+                        }
+                    }
+                }
+                System.out.println(c.getNumber()
+                            + "\t" + c.getName()
+                            + "\t" + c.getDescription()
+                            + "\n" + c.getPrerequisites());
+
             }
 
             // If the JSON file contains an array of objects

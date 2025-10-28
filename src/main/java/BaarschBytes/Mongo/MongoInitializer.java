@@ -28,11 +28,12 @@ public class MongoInitializer {
                 System.out.println(s);
                 System.out.println(req.getAttributes().get(s));
             }
-
+            System.out.println("\n\n");
         }
-
+        if (prereqs.isEmpty())
+            return List.of(new Document());
         return prereqs.stream()
-                .map(prereq -> { Document doc = new Document("Prerequisite", prereq.getClass());
+                .map(prereq -> { Document doc = new Document("Prerequisite", prereq.getClass().getName());
                     for (String s : prereq.getAttributes().keySet()) {
                         doc.append((s), prereq.getAttributes().get(s));
                     }
@@ -47,10 +48,9 @@ public class MongoInitializer {
                         .append("number", course.getNumber())
                         .append("name", course.getName())
                         .append("description", course.getDescription())
-                        .append("catalog year", course.getCatalogYear());
-                      // .append("Prerequisites", prereqsToDoc(course.getPrerequisites())
-                     //  );
-
+                        .append("catalog year", course.getCatalogYear())
+                        .append("Prerequisites", prereqsToDoc(course.getPrerequisites())
+                        );
                 })
                 .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 

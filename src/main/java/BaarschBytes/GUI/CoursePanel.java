@@ -25,6 +25,13 @@ public class CoursePanel extends DraggablePanel {
 
     public Course getCourse(){return course;}
 
-
+    @Override
+    public void setToolTipText(String text) {
+        if (this.course != null) {
+            text = this.course.getName();
+        }
+        // Pass the call to the parent class to handle the actual logic.
+        super.setToolTipText(text);
+    }
 
 }

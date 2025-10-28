@@ -11,13 +11,16 @@ public class Course implements Prerequisite {
     private List<Prerequisite> prerequisites;
     private int catalogYear;
 
+    public Course() {
+
+    }
 
     public Map<String, String> getAttributes(){
         Map<String, String> attributes = new HashMap();
-        attributes.put("Name", name);
-        attributes.put("Description", description);
-        attributes.put("Program", program);
-        attributes.put("Number", number);
+        attributes.put("Name", (name != null)? name : "");
+        attributes.put("Description", (description != null)? description : "");
+        attributes.put("Program", (program != null)? program : "");
+        attributes.put("Number", (number != null)? number : "");
         attributes.put("Catalog Year", String.valueOf(catalogYear));
         return attributes;
     }

@@ -7,8 +7,12 @@ import java.awt.event.MouseEvent;
 
 public class DraggablePanel extends JPanel {
     private Point dragOffset;
+    private String defaultToolTipText;
 
     public DraggablePanel() {
+        defaultToolTipText = "Default Tooltip Text!";
+        setToolTipText(defaultToolTipText);
+
         // Create a custom MouseAdapter for handling press and drag events
         MouseAdapter mouseAdapter = new MouseAdapter() {
 
@@ -16,7 +20,7 @@ public class DraggablePanel extends JPanel {
             public void mousePressed(MouseEvent e) {
                 // Store the initial click point (relative to the panel)
                 dragOffset = e.getPoint();
-
+                //setToolTipText(null);
                 // Optional: Bring the clicked panel to the front if it's in a JLayeredPane
                 // or if z-order matters.
                  if (getParent() != null) {
@@ -52,12 +56,22 @@ public class DraggablePanel extends JPanel {
             public void mouseReleased(MouseEvent e) {
                 // Clear the offset when the mouse is released
                 dragOffset = null;
+                setToolTipText(defaultToolTipText);
             }
         };
 
         // Add both listeners to this panel
         addMouseListener(mouseAdapter);
         addMouseMotionListener(mouseAdapter);
+    }
+
+    @Override
+    public void setToolTipText(String text) {
+        if (text != null) {
+            this.defaultToolTipText = text;
+        }
+        // Pass the call to the parent class to handle the actual logic.
+        super.setToolTipText(text);
     }
 }
 

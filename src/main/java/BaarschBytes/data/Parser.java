@@ -47,6 +47,7 @@ public class Parser {
             prerequisites.add(course);
             prereqs = prereqs.substring(0, index) + prereqs.substring(index+ 9);
         }
+
         if (prereqs.toLowerCase().contains("junior"))
             prerequisites.add(NonCoursePrerequisite.junior);
         if (prereqs.toLowerCase().contains("senior"))
